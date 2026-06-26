@@ -1,0 +1,31 @@
+flowchart LR
+  subgraph AppLayer["App Shell"]
+    App["App.jsx"]
+    Auth["AuthContext"]
+  end
+
+  subgraph Pages["Pages"]
+    Login["Login.jsx"]
+    FactoryDash["factoryDashboard.jsx"]
+    FarmerDash["farmerDashboard.jsx"]
+    ReportsDash["reportsDashboard.jsx"]
+  end
+
+  subgraph Components["Shared Components"]
+    Button["button.jsx"]
+    Heatmap["calendarHeatmap.jsx"]
+    Ledger["DailyLedgerDrawer.jsx"]
+  end
+
+  Utils["dataParser.js"]
+
+  App --> Auth
+  App --> Login
+  App --> FactoryDash
+  App --> FarmerDash
+  App --> ReportsDash
+  FactoryDash --> Button
+  FarmerDash --> Heatmap
+  ReportsDash --> Ledger
+  FarmerDash --> Utils
+  FactoryDash --> Utils

@@ -1,0 +1,56 @@
+erDiagram
+  SOCIETIES ||--o{ FACTORIES : has
+  SOCIETIES ||--o{ USERS : owns
+  FACTORIES ||--o{ FARMERS : has
+  FACTORIES ||--o{ SEASONS : has
+  FACTORIES ||--o{ CLOUD_DELIVERIES : syncs
+
+  SOCIETIES {
+    int id PK
+    string name UK
+    string registration_number
+  }
+  FACTORIES {
+    int id PK
+    int society_id FK
+    string name
+    string location
+    string contact_info
+    decimal total_production_kilos
+  }
+  USERS {
+    int id PK
+    string username UK
+    string role
+    int society_id FK
+    int factory_id FK
+  }
+  FARMERS {
+    int id PK
+    int factory_id FK
+    string member_id UK
+    string name
+    string phone
+    jsonb custom_data
+    decimal kilos_delivered
+    decimal season_kilos_delivered
+    timestamp last_delivery_date
+    boolean is_active
+  }
+  SEASONS {
+    int id PK
+    int factory_id FK
+    string name
+    date start_date
+    date end_date
+    boolean is_active
+  }
+  CLOUD_DELIVERIES {
+    int id PK
+    int factory_id FK
+    string member_id
+    int local_receipt_id UK
+    decimal kilos
+    timestamp delivered_at
+    decimal cumulative_total
+  }

@@ -1,0 +1,13 @@
+flowchart LR
+  Edge["Python Edge App"]
+  React["React UI (Vite)"]
+  API["Express API"]
+  WS["Socket.IO Server"]
+  DB[("PostgreSQL")]
+
+  React -->|HTTP JSON| API
+  API -->|SQL| DB
+  API --> WS
+  WS -->|coffee_synced| React
+  Edge -->|Sync deliveries/farmers| API
+  API -->|Pull updates| Edge

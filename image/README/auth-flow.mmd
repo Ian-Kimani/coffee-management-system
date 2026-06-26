@@ -1,0 +1,7 @@
+flowchart LR
+  L["Login form"] --> M["POST /auth/login"]
+  M --> N["Verify password"]
+  N --> O["Sign JWT"]
+  O --> P["Return token + profile"]
+  P --> Q["Persist to localStorage"]
+  Q --> R["Role-based routing"]

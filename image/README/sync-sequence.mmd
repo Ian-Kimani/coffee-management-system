@@ -1,0 +1,18 @@
+sequenceDiagram
+  participant Edge as Edge App
+  participant API as Express API
+  participant DB as PostgreSQL
+  participant WS as Socket.IO
+  participant UI as React UI
+
+  Edge->>API: POST /sync/deliveries
+  API->>DB: BEGIN
+  API->>DB: INSERT ... ON CONFLICT DO NOTHING
+  DB-->>API: ok
+  API->>DB: COMMIT
+  API->>WS: emit coffee_synced
+  WS-->>UI: coffee_synced
+  UI->>API: GET /metrics + dashboards
+  API->>DB: SELECT aggregates
+  DB-->>API: data
+  API-->>UI: dashboard payload

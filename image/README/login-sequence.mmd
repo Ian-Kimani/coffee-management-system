@@ -1,0 +1,14 @@
+sequenceDiagram
+  participant User
+  participant UI as React UI
+  participant API as Express API
+  participant DB as PostgreSQL
+
+  User->>UI: Submit login form
+  UI->>API: POST /auth/login (credentials)
+  API->>DB: SELECT user + org info
+  DB-->>API: user row
+  API->>API: Verify password + sign JWT
+  API-->>UI: 200 {token, profile}
+  UI->>UI: Persist token + profile
+  UI-->>User: Route by role

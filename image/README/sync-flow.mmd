@@ -1,0 +1,12 @@
+flowchart TD
+  A["Edge App collects deliveries"] --> B["POST /sync/deliveries"]
+  B --> C["BEGIN transaction"]
+  C --> D["INSERT ... ON CONFLICT DO NOTHING"]
+  D --> E["COMMIT"]
+  E --> F["Emit coffee_synced"]
+  F --> G["React refreshes dashboards"]
+
+  H["Edge edits farmers"] --> I["POST /sync/farmers"]
+  I --> D
+
+  J["Edge pulls cloud edits"] --> K["GET /sync/pull-farmers"]
