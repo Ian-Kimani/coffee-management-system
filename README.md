@@ -15,14 +15,14 @@
 ## 🌍 The Problem
 In the global agricultural sector—specifically rural coffee processing factories—internet connectivity is highly unstable. Standard web-based SaaS solutions fundamentally fail in these environments because they require a constant connection to log critical, rapid-fire transactions (like weighing daily coffee deliveries).
 
-This forces factories to rely on paper ledgers or fragmented Excel spreadsheets, resulting in massive data silos, human error, and a complete lack of operational visibility for corporate executives.
+This forces factories to rely on paper ledgers or outdated Excel spreadsheets, resulting in mistrusts, human error, and a complete lack of operational visibility for corporate executives.
 
 ## 🚀 The Solution: Kahawa Cloud
-**Kahawa Cloud** is a proprietary, multi-tenant distributed system built to completely bridge the gap between the rural factory floor and the corporate boardroom. 
+**Kahawa Cloud** is a proprietary, multi-tenant distributed system built to completely bridge the gap between the rural factories where the daily activities take place and the corporate boardroom where management is done and payments are decided.
 
-The ecosystem consists of two distinct components that operate in tandem:
-1. **The Edge Desktop App (Python/SQLite):** A lightweight, offline-first application deployed directly on factory computers. Clerks can log hundreds of daily farmer deliveries completely offline with zero latency.
-2. **The Centralized Cloud Dashboard (Node.js/React/PostgreSQL):** A corporate portal where executives can oversee operations. When the rural factory detects an internet connection, it silently and securely synchronizes its local ledger to the cloud in the background.
+The system consists of two distinct components that operate together:
+1. **The Edge Desktop App (Python/PostgreSQL):** A lightweight, offline-first application deployed directly on factory computers. Clerks can log hundreds of daily farmer deliveries completely offline with zero latency.
+2. **The Centralized Cloud Dashboard (Node.js/React/PostgreSQL):** A wb based platform where executives can oversee operations. When the rural factory detects an internet connection, it silently and securely synchronizes its local ledger to the cloud in the background.
 
 ---
 
@@ -106,11 +106,10 @@ Designed for dynamic flexibility, the `farmers` table utilizes PostgreSQL `JSONB
 ---
 
 ## 🛣️ Future Roadmap
-- [ ] **SMS Integration:** Automatically ping farmers via Twilio API when their delivery is successfully synced to the cloud.
+- [ ] **SMS Integration:** To handle automated bulk sms to farmers for easier communications.
 - [ ] **Mobile Payment System:** Integrate with local mobile money APIs (like M-Pesa) to automate direct financial disbursements based on delivery yields.
-- [ ] **Immutable Audit Logs:** Implement a blockchain-style append-only ledger for all CRUD operations to ensure forensic-level financial compliance.
+- [ ] **Immutable Audit Logs:** An audit logging system to improve transparency and traceability of operational changes. 
 - [ ] **Machine Learning Yield Prediction:** Analyze historical weather data against delivery weights to predict seasonal factory output.
-- [ ] **Hardware Integration:** Connect the Edge Desktop App directly to serial-port digital scales to automate weight capture and eliminate manual entry errors.
 
 ---
 
